@@ -7,7 +7,12 @@ import socket
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--port", action="store", dest="port", type=int, default=1337)
+parser.add_argument("-s", "--serveur", action="store", dest="serveur", type=int, default=0)
 port = vars(parser.parse_args())["port"]
+flagS = vars(parser.parse_args())["serveur"]
+
+print (flagS)
+
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
