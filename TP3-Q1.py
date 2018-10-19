@@ -12,11 +12,23 @@ except ImportError:
     sys.exit(84)
 
 if __name__ == "__main__":
+
+    serveur = 0
+    client = 0
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--port", action="store", dest="port", type=int, default=1337)
-    port = vars(parser.parse_args())["port"]
+    parser.add_argument("--serveur", "-s", help="start a server", action="store_true")
+    parser.add_argument("--destination", "-d", help="start a client")
+    args = parser.parse_args()
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    if args.serveur:
+        serveur = 1
+    if args.destination:
+        client = 1
+    if (serveur and client):
+        print("Error ! it's Server or client but not both", file=sys.stderr)
+        sys.exit(84)
+    """sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     server_address = ('localhost', port)
     print('starting up on {} port {}'.format(*server_address))
@@ -37,4 +49,5 @@ if __name__ == "__main__":
                     break
 
         finally:
-            connection.close()
+            connection.close()"""
+    sys.exit(0)
