@@ -11,23 +11,38 @@ except ImportError:
     print("Error ! can not loaded external libs", file=sys.stderr)
     sys.exit(84)
 
+
+def runServer():
+    print("on lance le serveur")
+
+def runClient():
+    print("on run le client")
+
 if __name__ == "__main__":
 
-    serveur = 0
-    client = 0
+    server = 0
+    client = 1
+    dest = 0
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--port", action="store", dest="port", type=int, default=1337)
+    parser.add_argument("-p", "--port", action="store", dest="port", type=int, required=True)
     parser.add_argument("--serveur", "-s", help="start a server", action="store_true")
     parser.add_argument("--destination", "-d", help="start a client")
     args = parser.parse_args()
 
     if args.serveur:
-        serveur = 1
+        server = 1
+        client = 0
     if args.destination:
-        client = 1
-    if (serveur and client):
-        print("Error ! it's Server or client but not both", file=sys.stderr)
+        dest = 1
+
+    if server and dest:
+        print("Error ! Not --destination with server mode", file=sys.stderr)
         sys.exit(84)
+
+    if server:
+        runServer()
+    else:
+        runClient()
     """sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     server_address = ('localhost', port)
