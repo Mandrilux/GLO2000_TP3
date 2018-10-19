@@ -25,8 +25,8 @@ if __name__ == "__main__":
     dest = 0
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--port", action="store", dest="port", type=int, required=True)
-    parser.add_argument("--serveur", "-s", help="start a server", action="store_true")
-    parser.add_argument("--destination", "-d", help="start a client")
+    parser.add_argument("--serveur", "-s", help="start a server (client mode by default)", action="store_true")
+    parser.add_argument("--destination", "-d", help="setup Ip destination ( with client mode only)")
     args = parser.parse_args()
 
     if args.serveur:
