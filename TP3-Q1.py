@@ -29,8 +29,10 @@ def runServer(port):
             print('connection from', client_address)
 
             while True:
-                send_msg(connection, "Envoi du modulo " + str(m) + "\n")
-                send_msg(connection, "Envoi de la base " + str(n) + "\n")
+                print ("Envoi du modulo " + str(m))
+                print ("Envoi de la base " + str(m))
+                send_msg(connection, str(m))
+                send_msg(connection, str(n))
                 data = connection.recv(1024).decode("utf-8").replace("\r\n", "")
                 print (data)
                 if not data:
