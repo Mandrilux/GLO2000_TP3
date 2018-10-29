@@ -21,9 +21,9 @@ def runServer(port):
     sock.listen(1)
     while True:
         print('waiting for a connection')
-        m = entierAleatoire(1000)
+        m = trouverNombrePremier();
         print (m)
-        n = trouverNombrePremier()
+        n = entierAleatoire(m)
         print (n)
         connection, client_address = sock.accept()
         try:
