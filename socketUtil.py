@@ -11,7 +11,7 @@ def recvall(socket, count):
 
 def send_msg(socket, message):
 	message = message.encode()
-	socket.sendall(struct.pack('!I', len(message)))
+	#socket.sendall(struct.pack('!I', len(message)))
 	socket.sendall(message)
 
 def recv_msg(socket):

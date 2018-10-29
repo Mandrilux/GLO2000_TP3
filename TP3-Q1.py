@@ -8,6 +8,7 @@ try:
     import argparse
     import socket
     from cryptoModule import entierAleatoire, trouverNombrePremier, exponentiationModulaire
+    from socketUtil import *
 except ImportError:
     print("Error ! can not loaded external libs", file=sys.stderr)
     sys.exit(84)
@@ -21,15 +22,15 @@ def runServer(port):
     sock.listen(1)
     while True:
         print('waiting for a connection')
-        m = trouverNombrePremier();
-        print (m)
+        m = trouverNombrePremier()
         n = entierAleatoire(m)
-        print (n)
         connection, client_address = sock.accept()
         try:
             print('connection from', client_address)
 
             while True:
+                send_msg(connection, "Envoi du modulo " + str(m) + "\n")
+                send_msg(connection, "Envoi de la base " + str(n) + "\n")
                 data = connection.recv(1024).decode("utf-8").replace("\r\n", "")
                 print (data)
                 if not data:
