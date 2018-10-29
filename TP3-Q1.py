@@ -30,19 +30,33 @@ def runServer(port):
 
             while True:
                 print ("Envoi du modulo " + str(m))
-                print ("Envoi de la base " + str(m))
+                print ("Envoi de la base " + str(n))
                 send_msg(connection, str(m))
                 send_msg(connection, str(n))
-                data = connection.recv(1024).decode("utf-8").replace("\r\n", "")
+                data = connection.recv(1024)
                 print (data)
                 if not data:
                     break
+           #    data = connection.recv(1024).decode("utf-8").replace("\r\n", "")
+           #    print (data)
+           #    if not data:
+           #        break
             """connection.sendall(str.encode("Bien recu"), 0)"""
         finally:
             connection.close()
 
-def runClient():
-    print("on run le client")
+def runClient(port, dest):
+    print("Trying " + str(dest) + ":" + str(port) + " ...")
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_address = (dest, port)
+    sock.connect(server_address)
+
+    try:
+        message = recv_msg(sock)
+        print (message)
+    finally:
+        sock.close()
 
 if __name__ == "__main__":
 
@@ -65,10 +79,12 @@ if __name__ == "__main__":
     if server and dest:
         print("Error ! Not --destination with server mode", file=sys.stderr)
         sys.exit(84)
-
+    if client and dest == 0:
+        print("Error ! Need destination with client mode", file=sys.stderr)
+        sys.exit(84)
     if server:
         runServer(port)
     else:
-        runClient()
+        runClient(port, args.destination)
 
     sys.exit(0)
