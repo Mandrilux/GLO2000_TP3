@@ -9,8 +9,13 @@ try:
     import socket
     from cryptoModule import entierAleatoire, trouverNombrePremier, exponentiationModulaire
     from socketUtil import *
+    from datetime import datetime
 except ImportError:
-    print("Error ! can not loaded external libs", file=sys.stderr)
+    errormsg = "Error ! Can not load external libs"
+    log = open("Error.log", "a")
+    log.write(str(datetime.now()) + " " + errormsg + "\n")
+    log.close()
+    print(errormsg, file=sys.stderr)
     sys.exit(84)
 
 
@@ -77,10 +82,18 @@ if __name__ == "__main__":
         dest = 1
 
     if server and dest:
-        print("Error ! Not --destination with server mode", file=sys.stderr)
+        errormsg = "Error ! Do not use --destination with server mode"
+        log = open("Error.log", "a")
+        log.write(str(datetime.now()) + " " + errormsg + "\n")
+        log.close()
+        print(errormsg, file=sys.stderr)
         sys.exit(84)
     if client and dest == 0:
-        print("Error ! Need destination with client mode", file=sys.stderr)
+        errormsg = "Error ! Need destination with client mode"
+        log = open("Error.log", "a")
+        log.write(str(datetime.now()) + " " + errormsg + "\n")
+        log.close()
+        print(errormsg, file=sys.stderr)
         sys.exit(84)
     if server:
         runServer(port)
