@@ -58,8 +58,10 @@ def runClient(port, dest):
     sock.connect(server_address)
 
     try:
-        message = recv_msg(sock)
-        print (message)
+        modulo = recv_msg(sock)
+        print ("Reception du modulo " + modulo)
+        base = recv_msg(sock)
+        print("Reception de la base " + base)
     finally:
         sock.close()
 
