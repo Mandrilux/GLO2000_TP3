@@ -29,6 +29,7 @@ def runServer(port):
         print('waiting for a connection')
         m = trouverNombrePremier()
         n = entierAleatoire(m)
+        a = entierAleatoire(m)
         connection, client_address = sock.accept()
         try:
             print('connection from', client_address)
@@ -38,6 +39,14 @@ def runServer(port):
                 print ("Envoi de la base " + str(n))
                 send_msg(connection, str(m))
                 send_msg(connection, str(n))
+                print("Generation de la cle privee " + str(a))
+                A = exponentiationModulaire(n, a, m)
+                send_msg(connection, str(A))
+                print("Envoi de la cle publique " + str(A))
+                B = recv_msg(connection)
+                print("Reception de la cle publique client " + B)
+                k = exponentiationModulaire(int(B), a, m)
+                print("Obtention de la cle partagee " + str(k))
                 data = connection.recv(1024)
                 print (data)
                 if not data:
@@ -62,6 +71,15 @@ def runClient(port, dest):
         print ("Reception du modulo " + modulo)
         base = recv_msg(sock)
         print("Reception de la base " + base)
+        b = entierAleatoire(int(modulo))
+        print("Generation de la cle privee " + str(b))
+        B = exponentiationModulaire(int(base), b, int(modulo))
+        A = recv_msg(sock)
+        print("Reception de la cle publique serveur " + A)
+        seng_msg(sock, str(B))
+        print("Envoi de la cle publique " + str(B))
+        k = exponentiationModulaire(int(A), b, int(modulo))
+        print("Obtention de la cle partagee " + str(k))
     finally:
         sock.close()
 
