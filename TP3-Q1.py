@@ -11,13 +11,14 @@ try:
     from socketUtil import *
     from datetime import datetime
 except ImportError:
-    errormsg = "Error ! Can not load external libs"
-    log = open("Error.log", "a")
-    log.write(str(datetime.now()) + " " + errormsg + "\n")
-    log.close()
-    print(errormsg, file=sys.stderr)
-    sys.exit(84)
+    WriteErrorLog("Error ! Can not load external libs")
 
+def WriteErrorLog(msg):
+    log = open("Error.log", "a")
+    log.write(str(datetime.now()) + " " + msg + "\n")
+    log.close()
+    print(msg, file=sys.stderr)
+    sys.exit(84)
 
 def runServer(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -51,11 +52,6 @@ def runServer(port):
                 print (data)
                 if not data:
                     break
-           #    data = connection.recv(1024).decode("utf-8").replace("\r\n", "")
-           #    print (data)
-           #    if not data:
-           #        break
-            """connection.sendall(str.encode("Bien recu"), 0)"""
         finally:
             connection.close()
 
@@ -64,8 +60,11 @@ def runClient(port, dest):
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_address = (dest, port)
-    sock.connect(server_address)
 
+    try:
+        sock.connect(server_address)
+    except socket.error as e:
+        WriteErrorLog(str(e))
     try:
         modulo = recv_msg(sock)
         print ("Reception du modulo " + modulo)
@@ -102,19 +101,9 @@ if __name__ == "__main__":
         dest = 1
 
     if server and dest:
-        errormsg = "Error ! Do not use --destination with server mode"
-        log = open("Error.log", "a")
-        log.write(str(datetime.now()) + " " + errormsg + "\n")
-        log.close()
-        print(errormsg, file=sys.stderr)
-        sys.exit(84)
+        WriteErrorLog("Error ! Do not use --destination with server mode")
     if client and dest == 0:
-        errormsg = "Error ! Need destination with client mode"
-        log = open("Error.log", "a")
-        log.write(str(datetime.now()) + " " + errormsg + "\n")
-        log.close()
-        print(errormsg, file=sys.stderr)
-        sys.exit(84)
+        WriteErrorLog("Error ! Need destination with client mode")
     if server:
         runServer(port)
     else:
