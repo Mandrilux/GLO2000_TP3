@@ -3,7 +3,6 @@
 
 
 import sys
-
 try:
     import argparse
     import socket
@@ -13,11 +12,12 @@ try:
 except ImportError:
     WriteErrorLog("Error ! Can not load external libs")
 
-def WriteErrorLog(msg):
+def WriteErrorLog(msg, display=1):
     log = open("Error.log", "a")
     log.write(str(datetime.now()) + " " + msg + "\n")
     log.close()
-    print(msg, file=sys.stderr)
+    if display:
+        print(msg, file=sys.stderr)
     sys.exit(84)
 
 def runServer(port):
@@ -91,7 +91,10 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--port", action="store", dest="port", type=int, required=True)
     parser.add_argument("--serveur", "-s", help="start a server (client mode by default)", action="store_true")
     parser.add_argument("--destination", "-d", help="setup Ip destination ( with client mode only)")
-    args = parser.parse_args()
+    try:
+        args = parser.parse_args()
+    except:
+        WriteErrorLog("Invalid Parameters", 0)
     port = args.port
 
     if args.serveur:
