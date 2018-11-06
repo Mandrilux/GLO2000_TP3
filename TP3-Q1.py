@@ -75,7 +75,7 @@ def runClient(port, dest):
         B = exponentiationModulaire(int(base), b, int(modulo))
         A = recv_msg(sock)
         print("Reception de la cle publique serveur " + A)
-        seng_msg(sock, str(B))
+        send_msg(sock, str(B))
         print("Envoi de la cle publique " + str(B))
         k = exponentiationModulaire(int(A), b, int(modulo))
         print("Obtention de la cle partagee " + str(k))
