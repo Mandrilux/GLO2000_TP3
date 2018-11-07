@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#####!/usr/bin/env python3
 # -*- coding: latin-1 -*-
 
 #fix display error with python2
@@ -29,8 +29,11 @@ def runServer(port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_address = ("0.0.0.0", port)
     print('starting up on {} port {}'.format(*server_address))
-    sock.bind(server_address)
-    sock.listen(1)
+    try:
+        sock.bind(server_address)
+        sock.listen(1)
+    except socket.error as e:
+        WriteErrorLog(str(e))
     while True:
         print('waiting for a connection')
         m = trouverNombrePremier()
