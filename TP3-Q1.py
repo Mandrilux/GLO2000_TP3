@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: latin-1 -*-
 
+#fix display error with python2
+from __future__ import print_function
 
 import sys
 try:
@@ -10,7 +12,7 @@ try:
     from socketUtil import *
     from datetime import datetime
 except ImportError:
-    WriteErrorLog("Error ! Can not load external libs")
+    WriteErrorLog("Erreur ! Impossible de charger les librairies")
 
 def WriteErrorLog(msg, display=1):
     log = open("Error.log", "a")
@@ -104,9 +106,9 @@ if __name__ == "__main__":
         dest = 1
 
     if server and dest:
-        WriteErrorLog("Error ! Do not use --destination with server mode")
+        WriteErrorLog("Erreur ! L'application ne peut pas utiliser -d et -s simultanément")
     if client and dest == 0:
-        WriteErrorLog("Error ! Need destination with client mode")
+        WriteErrorLog("Erreur ! le parametre --destination requis")
     if server:
         runServer(port)
     else:
