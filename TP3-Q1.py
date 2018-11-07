@@ -12,12 +12,15 @@ try:
     from socketUtil import *
     from datetime import datetime
 except ImportError:
-    WriteErrorLog("Erreur ! Impossible de charger les librairies")
+    WriteErrorLog("Erreur :  Impossible de charger les librairies")
 
 def WriteErrorLog(msg, display=1):
-    log = open("Error.log", "a")
-    log.write(str(datetime.now()) + " " + msg + "\n")
-    log.close()
+    try:
+        with open("Error.log", "a") as outfile:
+            outfile.write(str(datetime.now()) + " " + msg + "\n")
+            outfile.close()
+    except IOError:
+        print("Erreur : Impossible d'acceder au fichier log ", file=sys.stderr)
     if display:
         print(msg, file=sys.stderr)
     sys.exit(84)
@@ -106,9 +109,9 @@ if __name__ == "__main__":
         dest = 1
 
     if server and dest:
-        WriteErrorLog("Erreur ! L'application ne peut pas utiliser -d et -s simultanément")
+        WriteErrorLog("Erreur : L'application ne peut pas utiliser -d et -s simultanement")
     if client and dest == 0:
-        WriteErrorLog("Erreur ! le parametre --destination requis")
+        WriteErrorLog("Erreur : le parametre --destination requis")
     if server:
         runServer(port)
     else:

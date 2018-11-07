@@ -39,12 +39,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2133" />
+          <entry key="py" value="2236" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2133" />
+          <entry key="Python" value="2236" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -63,11 +63,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TP3-Q1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+            <state relative-caret-position="174">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
                 <element signature="e#49#86#0" expanded="true" />
-                <marker date="1541634088293" expanded="true" signature="452:626" ph="..." />
+                <marker date="1541634445636" expanded="true" signature="773:775" ph="..." />
               </folding>
             </state>
           </provider>
@@ -100,7 +100,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="976" />
@@ -128,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541634150065" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541634453637" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -160,15 +160,15 @@
       <workItem from="1541091119866" duration="5000" />
       <workItem from="1541463372351" duration="563000" />
       <workItem from="1541463967119" duration="1069000" />
-      <workItem from="1541632623942" duration="713000" />
+      <workItem from="1541632623942" duration="1015000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9497000" />
+    <option name="totallyTimeSpent" value="9799000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="976" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="974" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26556778" />
@@ -186,7 +186,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32918552" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32993197" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -224,11 +224,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TP3-Q1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="66" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="66" />
+        <state relative-caret-position="174">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding>
             <element signature="e#49#86#0" expanded="true" />
-            <marker date="1541634088293" expanded="true" signature="452:626" ph="..." />
+            <marker date="1541634445636" expanded="true" signature="773:775" ph="..." />
           </folding>
         </state>
       </provider>
