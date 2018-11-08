@@ -91,7 +91,6 @@ def runClient(port, dest):
         sock.close()
 
 if __name__ == "__main__":
-
     server = 0
     client = 1
     dest = 0
@@ -115,6 +114,8 @@ if __name__ == "__main__":
         WriteErrorLog("Erreur : L'application ne peut pas utiliser -d et -s simultanement")
     if client and dest == 0:
         WriteErrorLog("Erreur : le parametre --destination requis")
+    if port < 0 or port > 65535:
+        WriteErrorLog("Erreur : le port doit etre 0-65535")
     if server:
         runServer(port)
     else:

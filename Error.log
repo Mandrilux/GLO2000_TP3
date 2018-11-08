@@ -14,3 +14,13 @@
 2018-11-07 18:55:18.004457 [Errno 48] Address already in use
 2018-11-07 18:55:18.637581 [Errno 48] Address already in use
 2018-11-07 18:55:26.337457 [Errno 48] Address already in use
+2018-11-07 19:12:11.463403 [Errno 48] Address already in use
+2018-11-07 19:14:18.194807 Invalid Parameters
+2018-11-07 19:16:05.717563 Invalid Parameters
+2018-11-07 19:16:06.672973 Invalid Parameters
+2018-11-07 19:17:33.665266 Invalid Parameters
+2018-11-07 19:23:50.343657 Invalid Parameters
+2018-11-07 19:26:16.537568 Erreur : le port doit etre 0-65535
+2018-11-07 19:26:18.171587 Erreur : le port doit etre 0-65535
+2018-11-07 19:26:23.139953 Erreur : le port doit etre 0-65535
+2018-11-07 19:26:37.107209 Invalid Parameters
